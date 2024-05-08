@@ -1,0 +1,83 @@
+/* ===== LOGO CONTAINER ===== */
+
+.login_container {
+    -fx-background-color: #eeeeee;
+}
+
+.login_logo_container {
+    -fx-background-color: #2b4570;
+    -fx-alignment: center;
+}
+
+.login_logo_container Text {
+    -fx-font-size: 2em;
+    -fx-fill: #ffffff;
+}
+
+.login_logo_container FontAwesomeIconView {
+    -fx-fill: #ecf39e;
+}
+
+/* ==================================== */
+
+
+
+/* ===== SIGNUP / LOGIN CONTAINER ===== */
+
+/* === OPTION BOX === */
+
+.option_choice_box {
+    -fx-background-color: #ecf39e;
+}
+
+.option_choice_box .label {
+    -fx-text-fill: #2b4570;
+    -fx-font-size: 1.1em;
+}
+
+.option_choice_box .arrow {
+    -fx-background-color: #2b4570;
+}
+
+.option_choice_box_menu {
+    -fx-background-color: #ecf39e;
+}
+
+/* === FORM === */
+
+.login_form_container {
+    -fx-alignment: top_left;
+}
+
+.login_form_container Label {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 0 0 0;
+}
+
+.login_form_container Button {
+    -fx-background-color: #2b4570;
+    -fx-text-fill: #ffffff;
+    -fx-pref-width: 350;
+    -fx-pref-height: 30;
+    -fx-font-size: 1.2em;
+    -fx-translate-y: 10;
+    -fx-font-weight: bold;
+}
+
+.login_form_container Button:hover {
+    -fx-cursor: hand;
+}
+
+.input_field {
+    -fx-background-color: #ffffff;
+    -fx-pref-height: 35;
+    -fx-font-size: 1.2em;
+}
+
+.error_message {
+    -fx-padding: 20px 0 0 0;
+    -fx-text-fill: #b3001b;
+}
+
+/* ==================================== */

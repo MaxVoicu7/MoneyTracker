@@ -1,4 +1,4 @@
-module com.moneytracker {
+module com.moneyTracker {
     requires javafx.controls;
     requires javafx.fxml;
     requires de.jensd.fx.glyphs.fontawesome;
@@ -6,7 +6,7 @@ module com.moneytracker {
     requires org.xerial.sqlitejdbc;
 
 
-    opens com.moneyTracker to javafx.fxml;
+    opens com.moneyTracker.Controllers to javafx.fxml;
     exports com.moneyTracker;
     exports com.moneyTracker.Controllers;
     exports com.moneyTracker.Models;
