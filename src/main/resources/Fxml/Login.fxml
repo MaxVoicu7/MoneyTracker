@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0"
             styleClass="login_container"
             stylesheets="@../Styles/login.css"
@@ -17,19 +16,17 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.moneyTracker.Controllers.LoginController">
 
-  <!-- ======================= LOGO CONTAINER ====================   -->
    <VBox prefHeight="400.0" prefWidth="200.0"
          styleClass="login_logo_container"
          AnchorPane.bottomAnchor="0.0"
          AnchorPane.leftAnchor="0.0"
          AnchorPane.topAnchor="0.0">
 
-      <FontAwesomeIconView glyphName="MONEY" size="45"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MoneyTracker"/>
+      <FontAwesomeIconView glyphName="MONEY" size="45" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="MoneyTracker" />
 
    </VBox>
 
-   <!-- ========================== SIGNUP / LOGIN CONTAINER =========================   -->
    <VBox layoutX="325.0" layoutY="100.0"
          prefHeight="350.0" prefWidth="350.0"
          styleClass="login_form_container"
@@ -38,17 +35,17 @@
          AnchorPane.rightAnchor="25.0"
          AnchorPane.topAnchor="25.0">
 
-      <Label text="Choose option:"/>
-      <ChoiceBox fx:id="optionSelector" prefWidth="150.0" styleClass="option_choice_box"/>
-      <Label fx:id="emailLabel" text="Email:"/>
-      <TextField fx:id="emailTextField" styleClass="input_field"/>
-      <Label fx:id="passwordLabel" text="Password:"/>
-      <TextField fx:id="passwordTextField" styleClass="input_field"/>
-      <Label fx:id="confirmPasswordLabel" text="Confirm password:"/>
-      <TextField fx:id="confirmPasswordTextField" styleClass="input_field"/>
-      <Button fx:id="optionButton" mnemonicParsing="false" text="Sign up"/>
-      <Label fx:id="errorLabel" styleClass="error_message" text="Error message"/>
+      <Label text="Choose option:" />
+      <ChoiceBox fx:id="optionSelector" prefWidth="150.0" styleClass="option_choice_box" />
+      <Label fx:id="emailLabel" text="Email:" />
+      <TextField fx:id="emailTextField" styleClass="input_field" />
+      <Label fx:id="passwordLabel" text="Password:" />
+      <TextField fx:id="passwordTextField" styleClass="input_field" />
+      <Label fx:id="confirmPasswordLabel" text="Confirm password:" />
+      <TextField fx:id="confirmPasswordTextField" styleClass="input_field" />
+      <Button fx:id="optionButton" mnemonicParsing="false" text="Sign up" />
+      <Label fx:id="errorLabel" styleClass="error_message" text="Error message" />
 
    </VBox>
-
+   
 </AnchorPane>
