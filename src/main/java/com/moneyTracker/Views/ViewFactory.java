@@ -1,4 +1,4 @@
 package com.moneyTracker.Views;
 
-public class View {
+public class ViewFactory {
 }
