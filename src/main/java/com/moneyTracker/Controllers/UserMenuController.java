@@ -1,6 +1,7 @@
 package com.moneyTracker.Controllers;
 
 import com.moneyTracker.Models.Model;
+import com.moneyTracker.Views.UserMenuOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,14 +33,14 @@ public class UserMenuController implements Initializable {
     }
 
     private void onDashboard() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set("Dashboard");
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(UserMenuOptions.DASHBOARD);
     }
 
     private void onSpendings() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set("Spendings");
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(UserMenuOptions.SPENDINGS);
     }
 
     private void onAccounts() {
-        Model.getInstance().getViewFactory().getSelectedMenuItem().set("Accounts");
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set(UserMenuOptions.ACCOUNTS);
     }
 }

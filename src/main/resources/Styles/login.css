@@ -28,6 +28,8 @@
 
 .option_choice_box {
     -fx-background-color: #ecf39e;
+    -fx-alignment: center;
+    -fx-padding: 0 0 6 5;
 }
 
 .option_choice_box .label {

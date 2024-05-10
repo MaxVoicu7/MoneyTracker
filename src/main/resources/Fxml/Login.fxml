@@ -36,7 +36,7 @@
          AnchorPane.topAnchor="25.0">
 
       <Label text="Choose option:" />
-      <ChoiceBox fx:id="optionSelector" prefWidth="150.0" styleClass="option_choice_box" />
+      <ChoiceBox fx:id="optionSelector" prefWidth="100.0" styleClass="option_choice_box" />
       <Label fx:id="emailLabel" text="Email:" />
       <TextField fx:id="emailTextField" styleClass="input_field" />
       <Label fx:id="passwordLabel" text="Password:" />

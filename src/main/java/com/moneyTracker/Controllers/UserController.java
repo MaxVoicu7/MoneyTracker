@@ -1,6 +1,7 @@
 package com.moneyTracker.Controllers;
 
 import com.moneyTracker.Models.Model;
+import com.moneyTracker.Views.UserMenuOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
@@ -17,8 +18,8 @@ public class UserController implements Initializable {
         Model.getInstance().getViewFactory().getSelectedMenuItem().addListener(
                 (observableValue, oldValue, newValue) -> {
                     switch (newValue) {
-                        case "Spendings" -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getSpendingsView());
-                        case "Accounts" -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getAccountsView());
+                        case UserMenuOptions.SPENDINGS -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getSpendingsView());
+                        case UserMenuOptions.ACCOUNTS -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getAccountsView());
                         default -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getDashboardView());
                     }
                 });

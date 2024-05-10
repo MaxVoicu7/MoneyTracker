@@ -1,8 +1,8 @@
 package com.moneyTracker.Views;
 
 import com.moneyTracker.Controllers.UserController;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -13,13 +13,13 @@ public class ViewFactory {
     private AnchorPane spendingsView;
     private AnchorPane accountsView;
 
-    private final StringProperty selectedMenuItem;
+    private final ObjectProperty<UserMenuOptions> selectedMenuItem;
 
     public ViewFactory() {
-        this.selectedMenuItem = new SimpleStringProperty("");
+        this.selectedMenuItem = new SimpleObjectProperty<>();
     }
 
-    public StringProperty getSelectedMenuItem() {
+    public ObjectProperty<UserMenuOptions> getSelectedMenuItem() {
         return selectedMenuItem;
     }
 

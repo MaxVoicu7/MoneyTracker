@@ -1,6 +1,8 @@
 package com.moneyTracker.Controllers;
 
 import com.moneyTracker.Models.Model;
+import com.moneyTracker.Views.OptionType;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -28,12 +30,14 @@ public class LoginController implements Initializable {
     @FXML
     private Label errorLabel;
     @FXML
-    private ChoiceBox<String> optionSelector;
+    private ChoiceBox<OptionType> optionSelector;
     @FXML
     private Button optionButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        optionSelector.setItems(FXCollections.observableArrayList(OptionType.LOGIN, OptionType.SIGNUP));
+        optionSelector.setValue(OptionType.LOGIN);
         optionButton.setOnAction(event -> onLogin());
     }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="60.0" prefWidth="550.0"
+            styleClass="cell_container"
+            stylesheets="@../Styles/spendingCell.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.moneyTracker.Controllers.SpendingCellController">
+
+    <VBox prefHeight="50.0" prefWidth="50.0"
+          styleClass="arrows_container"
+          AnchorPane.bottomAnchor="5.0"
+          AnchorPane.leftAnchor="14.0"
+          AnchorPane.topAnchor="5.0">
+
+        <FontAwesomeIconView fx:id="inArrow" glyphName="LONG_ARROW_RIGHT" size="20.0"/>
+        <FontAwesomeIconView fx:id="outArrow" glyphName="LONG_ARROW_LEFT" size="20.0"/>
+
+    </VBox>
+
+    <Label fx:id="spendingDayLabel"
+           layoutX="51.0" layoutY="22.0"
+           styleClass="spending_date"
+           text="10-05-2024"
+           AnchorPane.leftAnchor="100.0"
+           AnchorPane.topAnchor="22.0"/>
+
+    <Label fx:id="spendingNameLabel"
+           layoutX="224.0" layoutY="22.0"
+           styleClass="spending_category"
+           text="Cumpărături"
+           AnchorPane.leftAnchor="200.0"/>
+
+    <Label fx:id="spendingAmountLabel"
+           layoutX="464.0" layoutY="16.0"
+           styleClass="spending_amount"
+           text="1212.23 lei"
+           AnchorPane.rightAnchor="15.0"
+           AnchorPane.topAnchor="16.0"/>
+
+</AnchorPane>
