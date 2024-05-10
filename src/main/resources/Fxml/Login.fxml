@@ -44,7 +44,7 @@
       <Label fx:id="confirmPasswordLabel" text="Confirm password:" />
       <TextField fx:id="confirmPasswordTextField" styleClass="input_field" />
       <Button fx:id="optionButton" mnemonicParsing="false" text="Sign up" />
-      <Label fx:id="errorLabel" styleClass="error_message" text="Error message" />
+      <Label fx:id="errorLabel" styleClass="error_message" />
 
    </VBox>
    
