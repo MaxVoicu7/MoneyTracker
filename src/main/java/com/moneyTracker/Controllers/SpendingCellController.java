@@ -1,5 +1,6 @@
 package com.moneyTracker.Controllers;
 
+import com.moneyTracker.Models.Spending;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
@@ -20,6 +21,12 @@ public class SpendingCellController implements Initializable {
     private FontAwesomeIconView inArrow;
     @FXML
     private FontAwesomeIconView outArrow;
+
+    private final Spending spending;
+
+    public SpendingCellController(Spending spending) {
+        this.spending = spending;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
