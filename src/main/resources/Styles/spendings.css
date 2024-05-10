@@ -1,0 +1,19 @@
+.spendings_container {
+    -fx-background-color: #eeeeee;
+}
+
+.spendings_container Text {
+    -fx-fill: #000000;
+    -fx-font-size: 2.5em;
+    -fx-font-family: "Calibri Light";
+}
+
+.spendings_container .list-view {
+    -fx-background-color: #eeeeee;
+    -fx-padding: 10;
+}
+
+.spendings_container .list-cell {
+    -fx-background-color: #eeeeee;
+    -fx-pref-width: 800;
+}

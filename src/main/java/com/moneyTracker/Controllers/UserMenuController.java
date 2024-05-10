@@ -1,5 +1,6 @@
 package com.moneyTracker.Controllers;
 
+import com.moneyTracker.Models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,6 +22,19 @@ public class UserMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addListeners();
+    }
 
+    private void addListeners() {
+        dashboardButton.setOnAction(event -> onDashboard());
+        spendingsButton.setOnAction(event -> onSpendings());
+    }
+
+    private void onDashboard() {
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set("Dashboard");
+    }
+
+    private void onSpendings() {
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set("Spendings");
     }
 }
