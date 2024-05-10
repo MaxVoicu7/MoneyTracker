@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0"
+            styleClass="accounts_container"
+            stylesheets="@../Styles/accounts.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.moneyTracker.Controllers.AccountsController">
+
+   <Text fx:id="account1NameText"
+         layoutX="14.0" layoutY="19.0"
+         strokeType="OUTSIDE" strokeWidth="0.0"
+         text="MAIB Account"
+         AnchorPane.leftAnchor="14.0"
+         AnchorPane.topAnchor="14.0"/>
+
+   <VBox layoutX="14.0" layoutY="31.0"
+         prefHeight="300.0" prefWidth="450.0"
+         AnchorPane.leftAnchor="14.0"
+         AnchorPane.topAnchor="40.0">
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account id:"/>
+      <Label fx:id="account1IdLabel" text="**** **** **** 1234"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account expiration date:"/>
+      <Label fx:id="account1DateLabel" text="05/28"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account owner:"/>
+      <Label fx:id="account1OwnerLabel" text="VOICU MAXIM"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:"/>
+      <Label fx:id="account1BalanceLabel" text="1234.32 lei"/>
+
+   </VBox>
+
+   <Text fx:id="account2NameText"
+         layoutX="15.0" layoutY="353.0"
+         strokeType="OUTSIDE" strokeWidth="0.0"
+         text="MICB Account:"
+         AnchorPane.topAnchor="360.0"/>
+
+   <VBox layoutX="14.0" layoutY="377.0"
+         prefHeight="300.0" prefWidth="450.0"
+         AnchorPane.bottomAnchor="60.0"
+         AnchorPane.leftAnchor="14.0">
+
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account id:"/>
+      <Label fx:id="account2IdLabel" text="**** **** **** 1234"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account expiration date:"/>
+      <Label fx:id="account2DateLabel" text="05/28"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account owner:"/>
+      <Label fx:id="account2OwnerLabel" text="VOICU MAXIM"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:"/>
+      <Label fx:id="account2BalanceLabel" text="1234.32 lei"/>
+
+   </VBox>
+
+</AnchorPane>

@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 public class ViewFactory {
     private AnchorPane dashboardView;
     private AnchorPane spendingsView;
+    private AnchorPane accountsView;
+
     private final StringProperty selectedMenuItem;
 
     public ViewFactory() {
@@ -43,6 +45,18 @@ public class ViewFactory {
         }
 
         return spendingsView;
+    }
+
+    public AnchorPane getAccountsView() {
+        if (accountsView == null) {
+            try {
+                accountsView = new FXMLLoader(getClass().getResource("/Fxml/Accounts.fxml")).load();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return accountsView;
     }
 
     public void showLoginWindow() {

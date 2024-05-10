@@ -18,6 +18,7 @@ public class UserController implements Initializable {
                 (observableValue, oldValue, newValue) -> {
                     switch (newValue) {
                         case "Spendings" -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getSpendingsView());
+                        case "Accounts" -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getAccountsView());
                         default -> userBorderPane.setCenter(Model.getInstance().getViewFactory().getDashboardView());
                     }
                 });

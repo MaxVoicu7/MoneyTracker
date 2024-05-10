@@ -28,6 +28,7 @@ public class UserMenuController implements Initializable {
     private void addListeners() {
         dashboardButton.setOnAction(event -> onDashboard());
         spendingsButton.setOnAction(event -> onSpendings());
+        accountsButton.setOnAction(event -> onAccounts());
     }
 
     private void onDashboard() {
@@ -36,5 +37,9 @@ public class UserMenuController implements Initializable {
 
     private void onSpendings() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set("Spendings");
+    }
+
+    private void onAccounts() {
+        Model.getInstance().getViewFactory().getSelectedMenuItem().set("Accounts");
     }
 }
