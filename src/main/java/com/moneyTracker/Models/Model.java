@@ -1,9 +1,12 @@
 package com.moneyTracker.Models;
 
+import com.moneyTracker.Views.AccountType;
 import com.moneyTracker.Views.OptionType;
 import com.moneyTracker.Views.ViewFactory;
 
 import java.sql.ResultSet;
+import java.util.Arrays;
+import java.util.List;
 
 public class Model {
     private final ViewFactory viewFactory;
@@ -64,6 +67,9 @@ public class Model {
             if (resultSet.isBeforeFirst()) {
                 this.user.id = resultSet.getInt("id");
                 this.isUserLoggedIn = true;
+
+                List<Account> userAccounts = databaseDriver.getAccountsByUserId(this.user.id);
+                this.user.setAccounts(userAccounts.toArray(new Account[0]));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -73,5 +79,19 @@ public class Model {
     public boolean registerUser(String username, String password) {
         // You can add more logic here for validation or checking if the user already exists
         return this.databaseDriver.createUser(username, password);
+    }
+
+    public boolean createAccount(String accId, String accOwner, AccountType accType, double balance, String expDate) {
+        if (this.databaseDriver.createAccount(this.user.id, accId, accOwner, expDate, accType, balance)) {
+            List<Account> userAccounts = databaseDriver.getAccountsByUserId(this.user.id);
+            this.user.setAccounts(userAccounts.toArray(new Account[0]));
+            return true;
+        }
+
+        return false;
+    }
+
+    public Account[] getUserAccount() {
+        return this.user.getAccounts();
     }
 }

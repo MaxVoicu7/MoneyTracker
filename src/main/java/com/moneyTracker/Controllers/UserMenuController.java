@@ -5,6 +5,7 @@ import com.moneyTracker.Views.UserMenuOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +31,7 @@ public class UserMenuController implements Initializable {
         dashboardButton.setOnAction(event -> onDashboard());
         spendingsButton.setOnAction(event -> onSpendings());
         accountsButton.setOnAction(event -> onAccounts());
+        logoutButton.setOnAction(event -> onLogout());
     }
 
     private void onDashboard() {
@@ -42,5 +44,12 @@ public class UserMenuController implements Initializable {
 
     private void onAccounts() {
         Model.getInstance().getViewFactory().getSelectedMenuItem().set(UserMenuOptions.ACCOUNTS);
+    }
+
+    private void onLogout() {
+        Stage stage = (Stage) dashboardButton.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().setIsUserLoggedIn(false);
     }
 }

@@ -2,24 +2,80 @@
     -fx-background-color: #eeeeee;
 }
 
+.section_title {
+    -fx-font-size: 1.4em;
+    -fx-font-family: "Calibri Light";
+}
+
 .accounts_container Text {
     -fx-fill: #888888;
     -fx-font-size: 1.4em;
     -fx-font-family: "Calibri Light";
 }
 
-.accounts_container VBox {
+.account {
     -fx-border-width: 0 0 0 1;
     -fx-border-color: #888888;
     -fx-padding: 10;
     -fx-spacing: 15;
 }
 
-.accounts_container VBox Text {
+.account Text {
     -fx-font-size: 1.2em;
 }
 
-.accounts_container VBox Label {
+.account Label {
     -fx-font-size: 1.2em;
     -fx-font-weight: bold;
+}
+
+.create_account_container {
+    -fx-background-color: #2b4570;
+    -fx-background-radius: 20;
+    -fx-padding: 30;
+    -fx-spacing: 7;
+}
+
+.create_account_container Label {
+    -fx-text-fill: #eeeeee;
+    -fx-font-weight: 600;
+}
+
+.create_account_container ChoiceBox {
+    -fx-pref-width: 219;
+}
+
+.create_account_container ChoiceBox .label {
+    -fx-text-fill: #111111;
+}
+
+.create_account_container_title {
+    -fx-fill: #ffffff;
+    -fx-font-size: 1.8em;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 0 20;
+}
+
+.create_account_button {
+    -fx-padding: 5 30;
+    -fx-text-fill: #111111;
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+    -fx-pref-width: 219;
+}
+
+.error_message {
+    -fx-padding: 5 3 5 3;
+    -fx-background-color: #eeeeee;
+    -fx-background-radius: 5;
+    -fx-text-fill: #b3001b;
+    -fx-pref-width: 219;
+}
+
+.success_message {
+    -fx-padding: 5 3 5 3;
+    -fx-background-color: #eeeeee;
+    -fx-background-radius: 5;
+    -fx-text-fill: #008000;
+    -fx-pref-width: 219;
 }

@@ -1,5 +1,6 @@
 package com.moneyTracker.Controllers;
 
+import com.moneyTracker.Models.Spending;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -29,7 +30,7 @@ public class DashboardController implements Initializable {
     @FXML
     private Label usernameLabel;
     @FXML
-    private ListView<String> transactionListView;
+    private ListView<Spending> transactionListView;
     @FXML
     private TextField categoryTextField;
     @FXML

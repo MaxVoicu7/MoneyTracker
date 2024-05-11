@@ -85,7 +85,6 @@ public class LoginController implements Initializable {
             ValidationUtils.validateConfirmPassword(passwordField.getText(), confirmPasswordField.getText());
 
             boolean registration = Model.getInstance().registerUser(emailTextField.getText(), passwordField.getText());
-            Stage stage = (Stage) optionButton.getScene().getWindow();
 
             if (registration) {
                 errorLabel.setText("");

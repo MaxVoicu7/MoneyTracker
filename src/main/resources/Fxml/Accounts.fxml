@@ -1,60 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.geometry.Insets?>
 
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="accounts_container" stylesheets="@../Styles/accounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.moneyTracker.Controllers.AccountsController">
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0"
-            styleClass="accounts_container"
-            stylesheets="@../Styles/accounts.css"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.moneyTracker.Controllers.AccountsController">
+   <Label fx:id="accountsLabel" layoutX="14.0" layoutY="14.0" styleClass="section_title" text="List of accounts" />
 
-   <Text fx:id="account1NameText"
-         layoutX="14.0" layoutY="19.0"
-         strokeType="OUTSIDE" strokeWidth="0.0"
-         text="MAIB Account"
-         AnchorPane.leftAnchor="14.0"
-         AnchorPane.topAnchor="14.0"/>
+   <ScrollPane AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox fx:id="accountsVBox" spacing="10">
+         <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+         </padding>
+         <!-- Dynamic content -->
+      </VBox>
+   </ScrollPane>
 
-   <VBox layoutX="14.0" layoutY="31.0"
-         prefHeight="300.0" prefWidth="450.0"
-         AnchorPane.leftAnchor="14.0"
-         AnchorPane.topAnchor="40.0">
+   <VBox layoutX="511.0" layoutY="123.0" prefHeight="277.0" prefWidth="280.0" styleClass="create_account_container">
 
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account id:"/>
-      <Label fx:id="account1IdLabel" text="**** **** **** 1234"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account expiration date:"/>
-      <Label fx:id="account1DateLabel" text="05/28"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account owner:"/>
-      <Label fx:id="account1OwnerLabel" text="VOICU MAXIM"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:"/>
-      <Label fx:id="account1BalanceLabel" text="1234.32 lei"/>
-
-   </VBox>
-
-   <Text fx:id="account2NameText"
-         layoutX="15.0" layoutY="353.0"
-         strokeType="OUTSIDE" strokeWidth="0.0"
-         text="MICB Account:"
-         AnchorPane.topAnchor="360.0"/>
-
-   <VBox layoutX="14.0" layoutY="377.0"
-         prefHeight="300.0" prefWidth="450.0"
-         AnchorPane.bottomAnchor="60.0"
-         AnchorPane.leftAnchor="14.0">
-
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account id:"/>
-      <Label fx:id="account2IdLabel" text="**** **** **** 1234"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account expiration date:"/>
-      <Label fx:id="account2DateLabel" text="05/28"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account owner:"/>
-      <Label fx:id="account2OwnerLabel" text="VOICU MAXIM"/>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:"/>
-      <Label fx:id="account2BalanceLabel" text="1234.32 lei"/>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="create_account_container_title" text="Add new account" />
+      <Label text="Account id" />
+      <TextField fx:id="accountIdTextField" />
+      <Label text="Account type" />
+      <ChoiceBox fx:id="accountTypeChoiceBox" prefWidth="150.0" />
+      <Label text="Account owner" />
+      <TextField fx:id="accountOwnerTextField" />
+      <Label text="Expiration date" />
+      <TextField fx:id="accountDateTextField" />
+      <Label text="Balance" />
+      <TextField fx:id="accountBalanceTextField" />
+      <Button fx:id="createAccountButton" mnemonicParsing="false" styleClass="create_account_button" text="Create account" />
+      <Label fx:id="errorLabel" styleClass="error_message" text="Label" />
+      <Label fx:id="successLabel" styleClass="success_message" text="Label" />
 
    </VBox>
 
