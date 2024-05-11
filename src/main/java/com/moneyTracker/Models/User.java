@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class User {
+    protected int id;
     private final StringProperty email;
     private final StringProperty password;
 

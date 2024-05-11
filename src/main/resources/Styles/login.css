@@ -82,4 +82,9 @@
     -fx-text-fill: #b3001b;
 }
 
+.success_message {
+    -fx-padding: 20px 0 0 0;
+    -fx-text-fill: #008000;
+}
+
 /* ==================================== */
