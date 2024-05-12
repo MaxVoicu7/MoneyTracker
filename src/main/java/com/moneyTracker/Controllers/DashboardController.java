@@ -1,18 +1,26 @@
 package com.moneyTracker.Controllers;
 
+import com.moneyTracker.CustomExceptions.ValidationException;
 import com.moneyTracker.Models.Model;
 import com.moneyTracker.Models.Spending;
+import com.moneyTracker.Utils.ValidationUtils;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import com.moneyTracker.Models.Account;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -37,11 +45,15 @@ public class DashboardController implements Initializable {
     @FXML
     private Label usernameLabel;
     @FXML
-    private ListView<Spending> transactionListView;
+    private ScrollPane spendingScrollPane;
+    @FXML
+    private VBox spendingContainer;
     @FXML
     private TextField categoryTextField;
     @FXML
     private TextField amountTextField;
+    @FXML
+    private TextField accountTextField;
     @FXML
     private TextArea messageTextArea;
     @FXML
@@ -50,11 +62,96 @@ public class DashboardController implements Initializable {
     private AnchorPane card1Container;
     @FXML
     private AnchorPane card2Container;
+    @FXML
+    private Label errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         bindData();
         updateAccountDisplays();
+        displaySpendings();
+
+        errorLabel.setText("");
+        errorLabel.setVisible(false);
+        errorLabel.setManaged(false);
+
+        addSpendingButton.setOnAction(event -> onCreateNewSpending());
+    }
+
+    private void displaySpendings() {
+        List<Spending> spendings = Model.getInstance().getUserSpendings();
+        spendingContainer.getChildren().clear();
+
+        for (Spending spending : spendings) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/SpendingCell.fxml"));
+                AnchorPane spendingPane = loader.load();
+
+                SpendingCellController controller = loader.getController();
+                controller.updateSpending(spending);
+
+                spendingContainer.getChildren().add(spendingPane);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void onCreateNewSpending() {
+        try {
+            ValidationUtils.validateCategory(categoryTextField.getText());
+            ValidationUtils.validateAmount(amountTextField.getText());
+            ValidationUtils.validateAccountId(accountTextField.getText());
+
+            List<Account> accounts = Arrays.asList(Model.getInstance().getUserAccount());
+
+            String accountNumber = accountTextField.getText();
+            double amount = Double.parseDouble(amountTextField.getText());
+
+            Optional<Account> matchingAccount = accounts.stream()
+                    .filter(acc -> acc.getNumberProperty().get().equals(accountNumber))
+                    .findFirst();
+
+            if (matchingAccount.isEmpty()) {
+                throw new ValidationException("Account number does not exist.");
+            }
+
+            if (matchingAccount.get().getBalanceProperty().get() < amount) {
+                throw new ValidationException("Amount exceeds the account balance.");
+            }
+
+            Account foundAccount = matchingAccount.get();
+            int accountId = foundAccount.getId();
+
+            boolean spendingCreated = Model.getInstance().createSpending(accountId, categoryTextField.getText(),
+                    messageTextArea.getText(), Double.parseDouble(amountTextField.getText()));
+
+            if (spendingCreated) {
+                errorLabel.setVisible(true);
+                errorLabel.setManaged(true);
+                errorLabel.setText("Created spending");
+                clearSpendingFields();
+
+                updateAccountDisplays();
+                displaySpendings();
+            } else {
+                errorLabel.setVisible(true);
+                errorLabel.setManaged(true);
+                errorLabel.setText("Failed to create account");
+            }
+
+        } catch (ValidationException e) {
+            errorLabel.setText(e.getMessage());
+            errorLabel.setVisible(true);
+            errorLabel.setManaged(true);
+        }
+    }
+
+    private void clearSpendingFields() {
+        categoryTextField.setText("");
+        messageTextArea.setText("");
+        accountTextField.setText("");
+        amountTextField.setText("");
     }
 
     private void bindData() {

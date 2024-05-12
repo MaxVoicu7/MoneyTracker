@@ -8,6 +8,7 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DatabaseDriver {
     private Connection connection;
@@ -67,6 +68,67 @@ public class DatabaseDriver {
         }
     }
 
+    public boolean createSpending(int accId, String description, String message, double amount) {
+        PreparedStatement pstmt = null;
+        PreparedStatement updateStmt = null;
+
+        String insertSql = "INSERT INTO Spending (description, amount, date, message, accountId) VALUES (?, ?, ?, ?, ?);";
+        String updateSql = "UPDATE Account SET balance = balance - ? WHERE id = ?;";
+
+        try {
+            // Begin transaction
+            connection.setAutoCommit(false);
+
+            // Insert the spending entry
+            pstmt = connection.prepareStatement(insertSql);
+            pstmt.setString(1, description);
+            pstmt.setDouble(2, amount);
+            pstmt.setString(3, LocalDate.now().toString());
+            pstmt.setString(4, message);
+            pstmt.setInt(5, accId);
+            int affectedRows = pstmt.executeUpdate();
+
+            // Update the account balance
+            updateStmt = connection.prepareStatement(updateSql);
+            updateStmt.setDouble(1, amount);
+            updateStmt.setInt(2, accId);
+            int updatedRows = updateStmt.executeUpdate();
+
+            // Commit or rollback based on the success of the operations
+            if (affectedRows > 0 && updatedRows > 0) {
+                connection.commit();
+                return true;
+            } else {
+                connection.rollback();
+                return false;
+            }
+        } catch (SQLException e) {
+            System.err.println("SQL error: " + e.getMessage());
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                }
+            } catch (SQLException se) {
+                System.err.println("Rollback error: " + se.getMessage());
+            }
+            return false;
+        } finally {
+            try {
+                // Close prepared statements
+                if (pstmt != null) pstmt.close();
+                if (updateStmt != null) updateStmt.close();
+                // Reset auto-commit to true
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                }
+            } catch (SQLException se) {
+                System.err.println("SQL close error: " + se.getMessage());
+            }
+        }
+    }
+
+
+
     public List<Account> getAccountsByUserId(int userId) {
         List<Account> accounts = new ArrayList<>();
         String sql = "SELECT * FROM Account WHERE user_ID = ?";
@@ -78,6 +140,7 @@ public class DatabaseDriver {
             while (rs.next()) {
                 YearMonth expDate = YearMonth.parse(rs.getString("expirationDate"), formatter);
                 Account account = new Account(
+                        rs.getInt("id"),
                         rs.getString("owner"),
                         rs.getString("number"),
                         rs.getString("type"),
@@ -90,5 +153,49 @@ public class DatabaseDriver {
             e.printStackTrace();
         }
         return accounts;
+    }
+
+    public List<Spending> getAllSpendingsForUser(int userId) {
+        List<Account> accounts = getAccountsByUserId(userId);
+        List<Integer> accountIds = accounts.stream()
+                .map(Account::getId)
+                .collect(Collectors.toList());
+
+        return getSpendingsByAccountIds(accountIds);
+    }
+
+    public List<Spending> getSpendingsByAccountIds(List<Integer> accountIds) {
+        List<Spending> spendings = new ArrayList<>();
+        if (accountIds.isEmpty()) {
+            return spendings;
+        }
+
+        // Construct SQL IN clause dynamically based on account IDs size
+        String inClause = accountIds.stream()
+                .map(id -> "?")
+                .collect(Collectors.joining(", ", "(", ")"));
+
+        String sql = "SELECT * FROM Spending WHERE accountId IN " + inClause;
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            int index = 1;
+            for (Integer id : accountIds) {
+                pstmt.setInt(index++, id);
+            }
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Spending spending = new Spending(
+                        rs.getString("description"),
+                        rs.getDouble("amount"),
+                        LocalDate.parse(rs.getString("date")),
+                        rs.getString("message")
+                );
+                spendings.add(spending);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return spendings;
     }
 }

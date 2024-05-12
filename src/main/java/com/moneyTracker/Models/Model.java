@@ -6,7 +6,6 @@ import com.moneyTracker.Views.ViewFactory;
 import javafx.beans.property.StringProperty;
 
 import java.sql.ResultSet;
-import java.util.Arrays;
 import java.util.List;
 
 public class Model {
@@ -92,11 +91,25 @@ public class Model {
         return false;
     }
 
+    public boolean createSpending(int accId, String description, String message, double amount) {
+        if (this.databaseDriver.createSpending(accId, description, message, amount)) {
+            List<Account> userAccounts = databaseDriver.getAccountsByUserId(this.user.id);
+            this.user.setAccounts(userAccounts.toArray(new Account[0]));
+            return true;
+        }
+
+        return false;
+    }
+
     public Account[] getUserAccount() {
         return this.user.getAccounts();
     }
 
     public StringProperty getUsername() {
         return this.user.getEmailProperty();
+    }
+
+    public List<Spending> getUserSpendings() {
+        return this.getDatabaseDriver().getAllSpendingsForUser(this.user.id);
     }
 }

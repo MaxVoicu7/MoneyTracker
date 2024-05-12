@@ -8,6 +8,7 @@ public class User {
     private final StringProperty email;
     private final StringProperty password;
     private Account[] accounts;
+    private Spending[] spendings;
 
     public User(String email, String password) {
         this.email = new SimpleStringProperty(this, "email", email);

@@ -6,13 +6,15 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class Account {
+    private int id;
     private final StringProperty ownerName;
     private final StringProperty number;
     private final StringProperty type;
     private final ObjectProperty<YearMonth> expirationDate;
     private final DoubleProperty balance;
 
-    public Account(String owner, String nr, String type, YearMonth expDate, double balance) {
+    public Account(int id, String owner, String nr, String type, YearMonth expDate, double balance) {
+        this.id = id;
         this.ownerName = new SimpleStringProperty(this, "owner name", owner);
         this.number = new SimpleStringProperty(this, "number", nr);
         this.type = new SimpleStringProperty(this, "type", type);
@@ -53,5 +55,9 @@ public class Account {
 
     public DoubleProperty getBalance() {
         return this.balance;
+    }
+
+    public int getId() {
+        return this.id;
     }
 }

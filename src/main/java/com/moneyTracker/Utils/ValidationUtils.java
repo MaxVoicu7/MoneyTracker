@@ -83,4 +83,21 @@ public class ValidationUtils {
             throw new ValidationException("Balance must be a valid number");
         }
     }
+
+    public static void validateCategory(String category) throws ValidationException {
+        if (category == null || category.trim().isEmpty()) {
+            throw new ValidationException("Category is required.");
+        }
+    }
+
+    public static void validateAmount(String amount) throws ValidationException {
+        try {
+            double amt = Double.parseDouble(amount);
+            if (amt < 0) {
+                throw new ValidationException("Amount must be a non-negative number.");
+            }
+        } catch (NumberFormatException e) {
+            throw new ValidationException("Amount must be a valid number.");
+        }
+    }
 }
