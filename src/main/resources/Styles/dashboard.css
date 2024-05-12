@@ -106,14 +106,14 @@
     -fx-stroke: #aaaaaa;
 }
 
-.income_amount {
+.total_balance_amount {
     -fx-text-fill: #00aa00;
     -fx-font-family: "Calibri Light";
     -fx-font-size: 1.5em;
 }
 
-.expense_amount {
-    -fx-text-fill: #aa0000;
+.total_accounts_amount {
+    -fx-text-fill: #2b4570;
     -fx-font-family: "Calibri Light";
     -fx-font-size: 1.5em;
 }

@@ -27,16 +27,6 @@ import java.util.ResourceBundle;
 public class AccountsController implements Initializable {
     @FXML
     private Label accountsLabel;
-//    @FXML
-//    private Text account1NameText;
-//    @FXML
-//    private Label account1IdLabel;
-//    @FXML
-//    private Label account1DateLabel;
-//    @FXML
-//    private Label account1OwnerLabel;
-//    @FXML
-//    private Label account1BalanceLabel;
     @FXML
     private VBox accountsVBox;
     @FXML
@@ -61,14 +51,17 @@ public class AccountsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         accountTypeChoiceBox.setItems(FXCollections.observableArrayList(AccountType.MICB, AccountType.MAIB));
         accountTypeChoiceBox.setValue(AccountType.MAIB);
-        errorLabel.setVisible(false);
-        errorLabel.setManaged(false);
-        successLabel.setVisible(false);
-        successLabel.setManaged(false);
 
         displayAccounts(Arrays.asList(Model.getInstance().getUserAccount()));
 
         createAccountButton.setOnAction(event -> onCreateNewAccount());
+
+        errorLabel.setVisible(false);
+        errorLabel.setManaged(false);
+        errorLabel.setText("");
+        successLabel.setVisible(false);
+        successLabel.setManaged(false);
+        successLabel.setText("");
     }
 
     private void onCreateNewAccount() {

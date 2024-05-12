@@ -47,7 +47,7 @@
          AnchorPane.leftAnchor="20.0"
          AnchorPane.topAnchor="120.0">
 
-      <AnchorPane prefHeight="150.0" prefWidth="295.0">
+      <AnchorPane prefHeight="150.0" prefWidth="295.0" fx:id="card1Container">
 
          <styleClass>
             <String fx:value="account"/>
@@ -95,7 +95,7 @@
       </AnchorPane>
 
       <AnchorPane layoutX="10.0" layoutY="10.0"
-                  prefHeight="150.0" prefWidth="295.0">
+                  prefHeight="150.0" prefWidth="295.0" fx:id="card2Container">
 
          <styleClass>
             <String fx:value="account"/>
@@ -150,11 +150,11 @@
 
       <VBox prefHeight="200.0" prefWidth="100.0" styleClass="summary_container">
 
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Income"/>
-         <Label fx:id="incomeLabel" styleClass="income_amount" text="+ 111.32 lei"/>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total balance"/>
+         <Label fx:id="totalBalanceLabel" styleClass="total_balance_amount" text="+ 111.32 lei"/>
          <Line endX="160.0"/>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Expenses"/>
-         <Label fx:id="expenseLabel" styleClass="expense_amount" text="- 100.19 lei"/>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of accounts"/>
+         <Label fx:id="totalAccountsLabel" styleClass="total_accounts_amount" text="- 100.19 lei"/>
 
       </VBox>
 
@@ -200,7 +200,7 @@
    <Label fx:id="usernameLabel"
           layoutX="62.0" layoutY="40.0"
           styleClass="username"
-          text="Welcome back, Max!"
+          text="Dashboard"
           AnchorPane.leftAnchor="30.0"
           AnchorPane.topAnchor="20.0"/>
 

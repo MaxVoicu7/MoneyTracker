@@ -50,4 +50,8 @@ public class Account {
                 ", balance=" + balance.get() +
                 '}';
     }
+
+    public DoubleProperty getBalance() {
+        return this.balance;
+    }
 }

@@ -3,6 +3,7 @@ package com.moneyTracker.Models;
 import com.moneyTracker.Views.AccountType;
 import com.moneyTracker.Views.OptionType;
 import com.moneyTracker.Views.ViewFactory;
+import javafx.beans.property.StringProperty;
 
 import java.sql.ResultSet;
 import java.util.Arrays;
@@ -93,5 +94,9 @@ public class Model {
 
     public Account[] getUserAccount() {
         return this.user.getAccounts();
+    }
+
+    public StringProperty getUsername() {
+        return this.user.getEmailProperty();
     }
 }
