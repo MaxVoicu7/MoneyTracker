@@ -76,10 +76,8 @@ public class DatabaseDriver {
         String updateSql = "UPDATE Account SET balance = balance - ? WHERE id = ?;";
 
         try {
-            // Begin transaction
             connection.setAutoCommit(false);
 
-            // Insert the spending entry
             pstmt = connection.prepareStatement(insertSql);
             pstmt.setString(1, description);
             pstmt.setDouble(2, amount);
@@ -88,13 +86,11 @@ public class DatabaseDriver {
             pstmt.setInt(5, accId);
             int affectedRows = pstmt.executeUpdate();
 
-            // Update the account balance
             updateStmt = connection.prepareStatement(updateSql);
             updateStmt.setDouble(1, amount);
             updateStmt.setInt(2, accId);
             int updatedRows = updateStmt.executeUpdate();
 
-            // Commit or rollback based on the success of the operations
             if (affectedRows > 0 && updatedRows > 0) {
                 connection.commit();
                 return true;
@@ -114,10 +110,8 @@ public class DatabaseDriver {
             return false;
         } finally {
             try {
-                // Close prepared statements
                 if (pstmt != null) pstmt.close();
                 if (updateStmt != null) updateStmt.close();
-                // Reset auto-commit to true
                 if (connection != null) {
                     connection.setAutoCommit(true);
                 }
@@ -126,8 +120,6 @@ public class DatabaseDriver {
             }
         }
     }
-
-
 
     public List<Account> getAccountsByUserId(int userId) {
         List<Account> accounts = new ArrayList<>();
@@ -170,7 +162,6 @@ public class DatabaseDriver {
             return spendings;
         }
 
-        // Construct SQL IN clause dynamically based on account IDs size
         String inClause = accountIds.stream()
                 .map(id -> "?")
                 .collect(Collectors.joining(", ", "(", ")"));

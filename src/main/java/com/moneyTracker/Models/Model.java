@@ -77,7 +77,6 @@ public class Model {
     }
 
     public boolean registerUser(String username, String password) {
-        // You can add more logic here for validation or checking if the user already exists
         return this.databaseDriver.createUser(username, password);
     }
 

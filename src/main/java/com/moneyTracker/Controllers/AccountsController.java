@@ -108,7 +108,7 @@ public class AccountsController implements Initializable {
     }
 
     public void displayAccounts(List<Account> accounts) {
-        accountsVBox.getChildren().clear(); // Clear the VBox for new entries
+        accountsVBox.getChildren().clear();
 
         for (Account account : accounts) {
             VBox accountBox = new VBox(10);

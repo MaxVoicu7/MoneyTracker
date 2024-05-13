@@ -1,8 +1,6 @@
 package com.moneyTracker.Models;
 
 import javafx.beans.property.*;
-
-import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class Account {
