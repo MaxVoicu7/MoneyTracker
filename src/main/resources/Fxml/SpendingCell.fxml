@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="60.0" prefWidth="540.0"
             styleClass="cell_container"
             stylesheets="@../Styles/spendingCell.css"
@@ -12,23 +11,28 @@
             fx:controller="com.moneyTracker.Controllers.SpendingCellController">
 
     <Label fx:id="spendingDayLabel"
-           layoutX="51.0" layoutY="22.0"
+           layoutX="30.0" layoutY="22.0"
            styleClass="spending_date"
            text="10-05-2024"
-           AnchorPane.leftAnchor="100.0"
-           AnchorPane.topAnchor="22.0"/>
+           AnchorPane.leftAnchor="30.0"
+           AnchorPane.topAnchor="22.0" />
 
     <Label fx:id="spendingNameLabel"
-           layoutX="224.0" layoutY="22.0"
+           layoutX="117.0" layoutY="22.0"
            styleClass="spending_category"
            text="Cumpărături"
-           AnchorPane.leftAnchor="200.0"/>
+           AnchorPane.leftAnchor="117.0" />
 
     <Label fx:id="spendingAmountLabel"
            layoutX="464.0" layoutY="16.0"
            styleClass="spending_amount"
            text="1212.23 lei"
            AnchorPane.rightAnchor="15.0"
-           AnchorPane.topAnchor="16.0"/>
+           AnchorPane.topAnchor="16.0" />
+
+    <Label fx:id="spendingAccountLabel"
+           layoutX="312.0" layoutY="22.0"
+           styleClass="spending_date"
+           text="**** **** **** 1234" />
 
 </AnchorPane>

@@ -166,7 +166,9 @@ public class DatabaseDriver {
                 .map(id -> "?")
                 .collect(Collectors.joining(", ", "(", ")"));
 
-        String sql = "SELECT * FROM Spending WHERE accountId IN " + inClause;
+        String sql = "SELECT s.*, a.number AS accountNumber FROM Spending s " +
+                "JOIN Account a ON s.accountId = a.id " +
+                "WHERE s.accountId IN " + inClause;
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             int index = 1;
@@ -180,7 +182,8 @@ public class DatabaseDriver {
                         rs.getString("description"),
                         rs.getDouble("amount"),
                         LocalDate.parse(rs.getString("date")),
-                        rs.getString("message")
+                        rs.getString("message"),
+                        rs.getString("accountNumber")
                 );
                 spendings.add(spending);
             }
